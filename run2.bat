@@ -14,7 +14,7 @@ set color=%ESC%[48;2;
 %=Do not remove this line=%
 )
 
-call videos/Never.bat 320 8
+call videos/Never.bat 224 8
 echo %color%0;0;0m
 cls
 
@@ -97,7 +97,7 @@ echo %x%%color%%~1;%~2;%~3m %ESC%[0m
 goto :eof
 
 :graphicsTest
-set line=
+set line=%ESC%[H
 for /l %%r in (0, 1, 255) do (
     for /l %%b in (0, 1, 255) do (
         set line=!line!%ESC%[48;2;%%r;%%b;%%bm    
@@ -105,6 +105,7 @@ for /l %%r in (0, 1, 255) do (
     echo %ESC%[48;2;%%r;0;0!line!%ESC%[0m
     set line=
 )
+call images/Continue.bat 192 220
 timeout -1 > nul
 echo %ESC%[2J%ESC%[H
 goto :menu
